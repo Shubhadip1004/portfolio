@@ -208,7 +208,7 @@ const Portfolio = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1Ar8VJFKhkurjenCXJXJnnjt2zuhEIlLV"
+                  href="https://drive.google.com/file/d/1USnDK_oOqAPKV6zts-eFnQqx2lOiUuyC/view?usp=sharing"
                   className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold overflow-hidden transform transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/50"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
