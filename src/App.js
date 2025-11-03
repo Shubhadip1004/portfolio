@@ -595,8 +595,8 @@ const Portfolio = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
+              { name: 'OCI AI Foundations Associate', issuer: 'Oracle', date: 'October 2025', link: 'https://drive.google.com/file/d/1HrMT6wexXkJx1oTQ2eRds6L8-Kl-bIO4/view?usp=sharing' },
               { name: 'Cyber Suraksha', issuer: 'Microsoft | Tata Strive', date: 'May 2024', link: 'https://drive.google.com/file/d/1GrjDtrl-r8K37IsmbxdWjLYATzsyHJsX/view?usp=sharing' },
-              { name: 'Get Started with Python', issuer: 'Google | Coursera', date: 'January 2024', link: 'https://drive.google.com/file/d/1hsy9XMe8bLWp9K33gbFWHwJudYBR7Dvl/view?usp=sharing' },
               { name: 'Machine Learning Specialization', issuer: 'DeepLearning.AI | Coursera', date: 'September 2023', link: 'https://drive.google.com/file/d/1yKV6QpcoI4yP1c2xc3TwZUXAOm8tl_aI/view?usp=sharing' },
               { name: 'Foundations of Data Science', issuer: 'Google | Coursera', date: 'August 2023', link: 'https://drive.google.com/file/d/1W5TK1qeHBbC3a_3zW6Bp2D-n8Mg4I6bm/view?usp=sharing' },
               { name: 'Full Stack Data Scientist', issuer: 'Udemy', date: '', link: 'https://drive.google.com/file/d/14iYwywBKQO5IujDhgaP-kS7AICZmGOBr/view?usp=sharing' },
