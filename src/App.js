@@ -477,7 +477,6 @@ const Portfolio = () => {
                 <span>Frameworks</span>
               </h3>
               <div className="space-y-3">
-                {['Numpy', 'Pandas', 'Scikit-Learn', 'OpenCV', 'NLTK', 'Seaborn', 'Vosk'].map((skill, index) => (
                   <div
                     key={skill}
                     className="group relative px-6 py-4 bg-gradient-to-r from-purple-500/10 to-transparent rounded-lg border-l-4 border-purple-400 hover:border-l-8 hover:from-purple-500/20 transition-all duration-300 transform hover:translate-x-2"
