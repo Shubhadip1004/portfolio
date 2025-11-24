@@ -503,13 +503,13 @@ const Portfolio = () => {
             <div
               className="absolute inset-0 flex items-center justify-center"
               style={{
-                animation: 'train-ellipse 16s linear infinite',
+                animation: 'trainPath 18s linear infinite',
                 animationPlayState: activeWagon ? 'paused' : 'running',
               }}
             >
               <div className="flex items-center gap-4">
                 {/* Engine */}
-                <div className="px-4 py-3 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/40 flex items-center gap-2">
+                <div className="px-5 py-4 rounded-2xl bg-gradient-to-br from-gray-300 to-gray-600 border border-gray-900 shadow-[0_0_20px_rgba(0,0,0,0.45)] flex items-center gap-2 text-slate-900 font-bold">
                   <span className="text-2xl">🚂</span>
                   <span className="font-semibold text-xs md:text-sm tracking-wide uppercase text-white/90">
                     Skills Express
