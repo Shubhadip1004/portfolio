@@ -145,8 +145,8 @@ const Portfolio = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === item.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   {item.label}
@@ -172,8 +172,8 @@ const Portfolio = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${activeSection === item.id
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
               >
                 {item.label}
@@ -445,79 +445,62 @@ const Portfolio = () => {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 relative">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-center">
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Skills
-            </span>
+          <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
+            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Skills</span>
           </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-16"></div>
 
-          {/* Orbit + Center Display */}
-          <div className="flex flex-col items-center gap-12">
-            {/* Center bubble shows active category */}
-            <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-[0_0_40px_rgba(129,140,248,0.7)] flex flex-col items-center justify-center text-center mb-6">
-              <div className="text-3xl mb-2">
-                {skillCategories.find((c) => c.id === activeCategory)?.icon}
-              </div>
-              <p className="text-sm uppercase tracking-[0.25em] text-gray-200/80">
-                Category
-              </p>
-              <p className="text-lg font-bold mt-1">
-                {skillCategories.find((c) => c.id === activeCategory)?.label}
-              </p>
-            </div>
-
-            {/* Orbiting category headers */}
-            <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full border border-white/10" />
-
-              <div className={`relative w-full h-full ${activeCategory ? 'orbit-spin-paused' : 'orbit-spin'}`}>
-                {skillCategories.map((cat, index) => {
-                  const angle = (360 / skillCategories.length) * index;
-                  const isActive = cat.id === activeCategory;
-
-                  return (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => setActiveCategory(cat.id)}
-                      className={`absolute px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-md border 
-                  transition-all duration-300
-                  ${isActive
-                          ? 'bg-white/20 border-white/70 text-white scale-110 shadow-lg shadow-purple-500/40'
-                          : 'bg-black/40 border-white/20 text-gray-200 hover:bg-white/10 hover:scale-105'
-                        }`}
-                      style={{
-                        left: '50%',
-                        top: '50%',
-                        transform: `rotate(${angle}deg) translate(0, -160px) rotate(-${angle}deg)`,
-                      }}
-                    >
-                      <span className="mr-1">{cat.icon}</span>
-                      {cat.label}
-                    </button>
-                  );
-                })}
+          <div className="grid md:grid-cols-3 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Code className="text-blue-400" size={28} />
+                <span>Programming</span>
+              </h3>
+              <div className="space-y-3">
+                {['Python', 'Java', 'C', 'MySQL', 'Oracle DB'].map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="group relative px-6 py-4 bg-gradient-to-r from-blue-500/10 to-transparent rounded-lg border-l-4 border-blue-400 hover:border-l-8 hover:from-blue-500/20 transition-all duration-300 transform hover:translate-x-2"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <span className="text-lg font-semibold">{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Skills for selected category */}
-            <div className="w-full max-w-3xl mt-4">
-              <p className="text-center text-gray-400 text-sm mb-4">
-                Click on a category above to explore the skills inside it.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {skillCategories
-                  .find((c) => c.id === activeCategory)
-                  ?.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm 
-                  hover:bg-white/20 hover:scale-105 transition-all backdrop-blur-md"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Rocket className="text-purple-400" size={28} />
+                <span>Frameworks</span>
+              </h3>
+              <div className="space-y-3">
+                {['Numpy', 'Pandas', 'Scikit-Learn', 'OpenCV', 'NLTK', 'Seaborn', 'Vosk', 'Flask'].map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="group relative px-6 py-4 bg-gradient-to-r from-purple-500/10 to-transparent rounded-lg border-l-4 border-purple-400 hover:border-l-8 hover:from-purple-500/20 transition-all duration-300 transform hover:translate-x-2"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <span className="text-lg font-semibold">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Star className="text-green-400" size={28} />
+                <span>Languages</span>
+              </h3>
+              <div className="space-y-3">
+                {['English', 'Hindi', 'Bengali'].map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="group relative px-6 py-4 bg-gradient-to-r from-green-500/10 to-transparent rounded-lg border-l-4 border-green-400 hover:border-l-8 hover:from-green-500/20 transition-all duration-300 transform hover:translate-x-2"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <span className="text-lg font-semibold">{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
