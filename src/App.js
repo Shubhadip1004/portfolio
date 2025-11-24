@@ -30,7 +30,7 @@ const Portfolio = () => {
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
+      
       const sections = ['home', 'about', 'experience', 'education', 'skills', 'projects', 'certifications', 'publications'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -65,20 +65,20 @@ const Portfolio = () => {
   ];
 
   const codingPlatforms = [
-    {
-      name: 'LeetCode',
+    { 
+      name: 'LeetCode', 
       url: 'https://leetcode.com/u/ShubhadipMahata_1004/',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png',
       color: 'from-yellow-400 to-orange-500'
     },
-    {
-      name: 'GeeksForGeeks',
+    { 
+      name: 'GeeksForGeeks', 
       url: 'https://www.geeksforgeeks.org/user/shubhadipw/',
       logo: 'https://media.geeksforgeeks.org/gfg-gg-logo.svg',
       color: 'from-green-400 to-emerald-500'
     },
-    {
-      name: 'HackerRank',
+    { 
+      name: 'HackerRank', 
       url: 'https://www.hackerrank.com/profile/shubhadip_w',
       logo: 'https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5cb16e0ae.svg',
       color: 'from-green-500 to-teal-500'
@@ -113,14 +113,14 @@ const Portfolio = () => {
             }}
           />
         ))}
-        <div
+        <div 
           className="absolute w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] transition-all duration-300"
           style={{
             left: `${mousePosition.x - 300}px`,
             top: `${mousePosition.y - 300}px`,
           }}
         />
-        <div
+        <div 
           className="absolute w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] transition-all duration-300"
           style={{
             left: `${mousePosition.x - 150}px`,
@@ -130,8 +130,9 @@ const Portfolio = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-2xl py-4' : 'bg-transparent py-6'
-        }`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled ? 'bg-black/80 backdrop-blur-2xl py-4' : 'bg-transparent py-6'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="font-bold text-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
@@ -144,10 +145,11 @@ const Portfolio = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === item.id
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
+                    activeSection === item.id
                       ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
-                    }`}
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -171,10 +173,11 @@ const Portfolio = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${activeSection === item.id
+                className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${
+                  activeSection === item.id
                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
-                  }`}
+                }`}
               >
                 {item.label}
               </button>
@@ -194,15 +197,15 @@ const Portfolio = () => {
                 <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
                   Shubhadip
                 </span>
-                <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient" style={{ animationDelay: '1s' }}>
+                <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient" style={{animationDelay: '1s'}}>
                   Mahata
                 </span>
               </h1>
-
+              
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-400 mb-8 leading-relaxed">
                 Aspiring <span className="text-blue-400 font-bold">Developer</span> & <span className="text-purple-400 font-bold">AI Enthusiast</span>
               </p>
-
+              
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
                 <a
                   href="https://drive.google.com/uc?export=download&id=1USnDK_oOqAPKV6zts-eFnQqx2lOiUuyC"
@@ -245,7 +248,7 @@ const Portfolio = () => {
             <div className="relative group flex-shrink-0">
               {/* Subtle background glow only */}
               <div className="absolute -inset-16 bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-all duration-700"></div>
-
+              
               {/* Image with no border or box - natural placement */}
               <div className="relative w-72 h-96 md:w-96 md:h-[32rem] lg:w-[28rem] lg:h-[36rem] transform transition-all duration-700 group-hover:scale-105">
                 <img
@@ -265,7 +268,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">About Me</span>
           </h2>
-
+          
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
               <p className="transform transition-all duration-500 hover:translate-x-4 hover:text-white">
@@ -286,7 +289,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-
+            
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl opacity-50 blur-2xl group-hover:opacity-75 transition-all duration-500"></div>
               <div className="relative overflow-hidden rounded-3xl">
@@ -307,7 +310,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Experience</span>
           </h2>
-
+          
           <div className="space-y-8">
             <div className="group relative">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
@@ -378,7 +381,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">Education</span>
           </h2>
-
+          
           <div className="space-y-6">
             {[
               {
@@ -448,7 +451,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Skills</span>
           </h2>
-
+          
           <div className="grid md:grid-cols-3 gap-12">
             <div>
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
@@ -460,7 +463,7 @@ const Portfolio = () => {
                   <div
                     key={skill}
                     className="group relative px-6 py-4 bg-gradient-to-r from-blue-500/10 to-transparent rounded-lg border-l-4 border-blue-400 hover:border-l-8 hover:from-blue-500/20 transition-all duration-300 transform hover:translate-x-2"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{animationDelay: `${index * 100}ms`}}
                   >
                     <span className="text-lg font-semibold">{skill}</span>
                   </div>
@@ -478,7 +481,7 @@ const Portfolio = () => {
                   <div
                     key={skill}
                     className="group relative px-6 py-4 bg-gradient-to-r from-purple-500/10 to-transparent rounded-lg border-l-4 border-purple-400 hover:border-l-8 hover:from-purple-500/20 transition-all duration-300 transform hover:translate-x-2"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{animationDelay: `${index * 100}ms`}}
                   >
                     <span className="text-lg font-semibold">{skill}</span>
                   </div>
@@ -496,7 +499,7 @@ const Portfolio = () => {
                   <div
                     key={skill}
                     className="group relative px-6 py-4 bg-gradient-to-r from-green-500/10 to-transparent rounded-lg border-l-4 border-green-400 hover:border-l-8 hover:from-green-500/20 transition-all duration-300 transform hover:translate-x-2"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{animationDelay: `${index * 100}ms`}}
                   >
                     <span className="text-lg font-semibold">{skill}</span>
                   </div>
@@ -606,7 +609,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Certifications</span>
           </h2>
-
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: 'OCI AI Foundations Associate', issuer: 'Oracle', date: 'October 2025', link: 'https://drive.google.com/file/d/1HrMT6wexXkJx1oTQ2eRds6L8-Kl-bIO4/view?usp=sharing' },
@@ -647,7 +650,7 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Publications</span>
           </h2>
-
+          
           <div className="group relative overflow-hidden transform transition-all duration-500 hover:scale-105">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 group-hover:from-emerald-500/20 group-hover:to-cyan-500/20 transition-colors duration-500"></div>
             <div className="relative p-10">
@@ -683,13 +686,13 @@ const Portfolio = () => {
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Let's Connect</span>
           </h2>
-
+          
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
               <h3 className="text-3xl font-bold mb-8">Get In Touch</h3>
-              <a
-                href="mailto:shubhadip.w@gmail.com"
+              <a 
+                href="mailto:shubhadip.w@gmail.com" 
                 className="group flex items-center gap-4 p-6 bg-gradient-to-r from-blue-500/10 to-transparent rounded-2xl hover:from-blue-500/20 transition-all duration-300 transform hover:translate-x-4"
               >
                 <div className="p-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl group-hover:scale-110 transition-transform">
@@ -700,9 +703,9 @@ const Portfolio = () => {
                   <p className="text-lg font-semibold">shubhadip.w@gmail.com</p>
                 </div>
               </a>
-
-              <a
-                href="tel:+918942869813"
+              
+              <a 
+                href="tel:+918942869813" 
                 className="group flex items-center gap-4 p-6 bg-gradient-to-r from-purple-500/10 to-transparent rounded-2xl hover:from-purple-500/20 transition-all duration-300 transform hover:translate-x-4"
               >
                 <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl group-hover:scale-110 transition-transform">
