@@ -8,6 +8,53 @@ const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState([]);
 
+    const skillCategories = [
+    {
+      id: 'programming',
+      label: 'Programming',
+      icon: '🧠',
+      color: 'from-blue-500 to-cyan-500',
+      skills: ['Python', 'Java', 'C', 'MySQL', 'Oracle DB'],
+    },
+    {
+      id: 'frameworks',
+      label: 'Frameworks & Libraries',
+      icon: '🚀',
+      color: 'from-purple-500 to-pink-500',
+      skills: ['Numpy', 'Pandas', 'Scikit-Learn', 'Matplotlib', 'Flask', 'OpenCV', 'NLTK'],
+    },
+    {
+      id: 'tools',
+      label: 'Tools & Technologies',
+      icon: '🛠',
+      color: 'from-green-500 to-emerald-500',
+      skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman', 'Kaggle', 'Linux'],
+    },
+    {
+      id: 'languages',
+      label: 'Languages Spoken',
+      icon: '🌍',
+      color: 'from-yellow-400 to-orange-400',
+      skills: ['English', 'Hindi', 'Bengali'],
+    },
+    {
+      id: 'interests',
+      label: 'Interests',
+      icon: '💡',
+      color: 'from-pink-400 to-rose-500',
+      skills: [
+        'Machine Learning',
+        'Deep Learning',
+        'Reinforcement Learning',
+        'Data Structures & Algorithms',
+        'Object-Oriented Programming',
+        'Optimization Algorithms',
+      ],
+    },
+  ];
+
+  const [activeCategory, setActiveCategory] = useState('programming');
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
