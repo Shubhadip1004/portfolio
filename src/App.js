@@ -444,31 +444,22 @@ const Portfolio = () => {
 
       {/* Skills Section */}
       <section id="Skills" className="py-32 container">
-        <h2 className="section-title">Skills</h2>
+        <h2 className="section-title mb-2">Skills</h2>
+        <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-14"></div>
 
-        <div className="grid md:grid-cols-3 gap-10 mt-14">
-
-          {/* 🧠 Programming */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 hover:border-white/40 transition-all duration-500 hover:-translate-y-2">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-blue-400 text-2xl">🧠</span> Programming
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {["Python", "Java", "C", "MySQL", "Oracle DB"].map((item) => (
-                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 transition-all select-none">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 🚀 Frameworks & Libraries */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 hover:border-white/40 transition-all duration-500 hover:-translate-y-2">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-purple-400 text-2xl">🚀</span> Frameworks & Libraries
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {[
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            {
+              title: "Programming",
+              icon: "🧠",
+              color: "from-blue-500 to-cyan-500",
+              items: ["Python", "Java", "C", "MySQL", "Oracle DB"]
+            },
+            {
+              title: "Frameworks & Libraries",
+              icon: "🚀",
+              color: "from-purple-500 to-pink-500",
+              items: [
                 "Numpy",
                 "Pandas",
                 "Scikit-Learn",
@@ -476,21 +467,13 @@ const Portfolio = () => {
                 "Flask",
                 "OpenCV",
                 "NLTK"
-              ].map((item) => (
-                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 transition-all select-none">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 🛠 Tools & Technologies */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 hover:border-white/40 transition-all duration-500 hover:-translate-y-2">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-green-400 text-2xl">🛠</span> Tools & Technologies
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {[
+              ]
+            },
+            {
+              title: "Tools & Technologies",
+              icon: "🛠",
+              color: "from-green-500 to-emerald-500",
+              items: [
                 "Git",
                 "GitHub",
                 "VS Code",
@@ -498,27 +481,50 @@ const Portfolio = () => {
                 "Postman",
                 "Kaggle",
                 "Linux"
-              ].map((item) => (
-                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 transition-all select-none">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+              ]
+            }
+          ].map((skill) => (
+            <div
+              key={skill.title}
+              className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg
+        transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <div
+                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-10 blur-2xl`}
+              ></div>
 
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3 relative z-10">
+                <span className="text-2xl animate-pulse">{skill.icon}</span>
+                {skill.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-3 relative z-10">
+                {skill.items.map((item) => (
+                  <span
+                    key={item}
+                    className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Extra rows below — keep same style */}
+        {/* NEW ROW UNDER MAIN GRID */}
         <div className="grid md:grid-cols-2 gap-10 mt-14">
-
           {/* 🌍 Languages Spoken */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 hover:border-white/40 transition-all duration-500 hover:-translate-y-2">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-yellow-300 text-2xl">🌍</span> Languages Spoken
+          <div className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <span className="text-yellow-300 text-2xl animate-pulse">🌍</span> Languages Spoken
             </h3>
             <div className="flex flex-wrap gap-3">
               {["English", "Hindi", "Bengali"].map((item) => (
-                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 transition-all select-none">
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
+                >
                   {item}
                 </span>
               ))}
@@ -526,9 +532,9 @@ const Portfolio = () => {
           </div>
 
           {/* 💡 Interests */}
-          <div className="glass-card p-8 rounded-2xl border border-white/10 hover:border-white/40 transition-all duration-500 hover:-translate-y-2">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="text-pink-300 text-2xl">💡</span> Interests
+          <div className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <span className="text-pink-300 text-2xl animate-pulse">💡</span> Interests
             </h3>
             <div className="flex flex-wrap gap-3">
               {[
@@ -539,7 +545,10 @@ const Portfolio = () => {
                 "Object-Oriented Programming",
                 "Optimization Algorithms"
               ].map((item) => (
-                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 transition-all select-none">
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
+                >
                   {item}
                 </span>
               ))}
@@ -547,6 +556,7 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 relative">
