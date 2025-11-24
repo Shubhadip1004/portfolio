@@ -145,8 +145,8 @@ const Portfolio = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === item.id
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   {item.label}
@@ -172,8 +172,8 @@ const Portfolio = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${activeSection === item.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
               >
                 {item.label}
@@ -582,7 +582,13 @@ const Portfolio = () => {
                         </span>
                       </a>
                     ) : (
-                      <ExternalLink className="text-gray-400 group-hover:text-white transition-colors" size={20} />
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="text-gray-400 group-hover:text-white transition-colors" size={20} />
+                      </a>
                     )}
                     <ExternalLink className="text-gray-400 group-hover:text-white transition-colors" size={20} />
                   </div>
