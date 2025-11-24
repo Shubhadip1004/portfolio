@@ -526,8 +526,14 @@ const Portfolio = () => {
                 gradient: 'from-blue-500 to-cyan-500'
               },
               {
+                name: 'Model Canvas v2',
+                description: 'An interactive machine learning visualization platform that brings algorithms to life through real-time decision boundary visualization and performance metrics.',
+                link: 'https://github.com/Shubhadip1004/Model-Canvas-v2',
+                gradient: 'from-red-500 to-orange-500'
+              },
+              {
                 name: 'Certificate Generator',
-                description: 'Automated certificate generation processing 250+ certificates per minute',
+                description: 'Automated certificate generator processing 250+ certificates per minute',
                 link: 'https://github.com/Shubhadip1004/Certificate-Generator',
                 gradient: 'from-purple-500 to-pink-500'
               },
@@ -538,15 +544,9 @@ const Portfolio = () => {
                 gradient: 'from-pink-500 to-rose-500'
               },
               {
-                name: 'Heart Disease Detection',
-                description: 'ML-powered prediction system achieving ~84% accuracy',
-                link: 'https://github.com/Shubhadip1004/Heart_Disease_Detection',
-                gradient: 'from-red-500 to-orange-500'
-              },
-              {
-                name: 'Basic Chatbot',
-                description: 'NLTK-based chatbot with natural language understanding',
-                link: 'https://github.com/Shubhadip1004/CodeAlpha_Basic_Chatbot',
+                name: 'SniffAI',
+                description: 'A CNN Model with high accuracy in classifying real image and AI generated Image',
+                link: 'https://github.com/Shubhadip1004/SniffAI',
                 gradient: 'from-green-500 to-teal-500'
               },
               {
