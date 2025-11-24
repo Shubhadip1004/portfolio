@@ -443,120 +443,86 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="Skills" className="py-32 container">
-        <h2 className="section-title mb-2">Skills</h2>
-        <div className="w-24 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-14"></div>
+      <section id="skills" className="py-20 px-4 relative">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-center">
+            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+              Skills
+            </span>
+          </h2>
+          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-16"></div>
 
-        <div className="grid md:grid-cols-3 gap-10">
-          {[
-            {
-              title: "Programming",
-              icon: "🧠",
-              color: "from-blue-500 to-cyan-500",
-              items: ["Python", "Java", "C", "MySQL", "Oracle DB"]
-            },
-            {
-              title: "Frameworks & Libraries",
-              icon: "🚀",
-              color: "from-purple-500 to-pink-500",
-              items: [
-                "Numpy",
-                "Pandas",
-                "Scikit-Learn",
-                "Matplotlib",
-                "Flask",
-                "OpenCV",
-                "NLTK"
-              ]
-            },
-            {
-              title: "Tools & Technologies",
-              icon: "🛠",
-              color: "from-green-500 to-emerald-500",
-              items: [
-                "Git",
-                "GitHub",
-                "VS Code",
-                "Docker",
-                "Postman",
-                "Kaggle",
-                "Linux"
-              ]
-            }
-          ].map((skill) => (
-            <div
-              key={skill.title}
-              className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg
-        transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-            >
-              <div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-10 blur-2xl`}
-              ></div>
+          {/* Orbit + Center Display */}
+          <div className="flex flex-col items-center gap-12">
+            {/* Center bubble shows active category */}
+            <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-[0_0_40px_rgba(129,140,248,0.7)] flex flex-col items-center justify-center text-center mb-6">
+              <div className="text-3xl mb-2">
+                {skillCategories.find((c) => c.id === activeCategory)?.icon}
+              </div>
+              <p className="text-sm uppercase tracking-[0.25em] text-gray-200/80">
+                Category
+              </p>
+              <p className="text-lg font-bold mt-1">
+                {skillCategories.find((c) => c.id === activeCategory)?.label}
+              </p>
+            </div>
 
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-3 relative z-10">
-                <span className="text-2xl animate-pulse">{skill.icon}</span>
-                {skill.title}
-              </h3>
+            {/* Orbiting category headers */}
+            <div className="relative w-[320px] h-[320px] md:w-[420px] md:h-[420px] flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full border border-white/10" />
 
-              <div className="flex flex-wrap gap-3 relative z-10">
-                {skill.items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className={`relative w-full h-full ${activeCategory ? 'orbit-spin-paused' : 'orbit-spin'}`}>
+                {skillCategories.map((cat, index) => {
+                  const angle = (360 / skillCategories.length) * index;
+                  const isActive = cat.id === activeCategory;
+
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      onClick={() => setActiveCategory(cat.id)}
+                      className={`absolute px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-md border 
+                  transition-all duration-300
+                  ${isActive
+                          ? 'bg-white/20 border-white/70 text-white scale-110 shadow-lg shadow-purple-500/40'
+                          : 'bg-black/40 border-white/20 text-gray-200 hover:bg-white/10 hover:scale-105'
+                        }`}
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        transform: `rotate(${angle}deg) translate(0, -160px) rotate(-${angle}deg)`,
+                      }}
+                    >
+                      <span className="mr-1">{cat.icon}</span>
+                      {cat.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* NEW ROW UNDER MAIN GRID */}
-        <div className="grid md:grid-cols-2 gap-10 mt-14">
-          {/* 🌍 Languages Spoken */}
-          <div className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="text-yellow-300 text-2xl animate-pulse">🌍</span> Languages Spoken
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {["English", "Hindi", "Bengali"].map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 💡 Interests */}
-          <div className="relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-              <span className="text-pink-300 text-2xl animate-pulse">💡</span> Interests
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {[
-                "Machine Learning",
-                "Deep Learning",
-                "Reinforcement Learning",
-                "Data Structures & Algorithms",
-                "Object-Oriented Programming",
-                "Optimization Algorithms"
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm hover:bg-white/20 hover:scale-105 transition-all"
-                >
-                  {item}
-                </span>
-              ))}
+            {/* Skills for selected category */}
+            <div className="w-full max-w-3xl mt-4">
+              <p className="text-center text-gray-400 text-sm mb-4">
+                Click on a category above to explore the skills inside it.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {skillCategories
+                  .find((c) => c.id === activeCategory)
+                  ?.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gray-200 text-sm 
+                  hover:bg-white/20 hover:scale-105 transition-all backdrop-blur-md"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 relative">
@@ -636,6 +602,7 @@ const Portfolio = () => {
                       </a>
                     )}
                   </div>
+
                   <h3 className="text-2xl font-bold mb-3 group-hover:translate-x-2 transition-transform duration-300">
                     {project.name}
                   </h3>
