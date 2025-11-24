@@ -86,6 +86,46 @@ const Portfolio = () => {
     },
   ];
 
+    const skillTrainSections = [
+    {
+      id: 'programming',
+      label: 'Programming',
+      icon: '🧠',
+      skills: ['Python', 'Java', 'C', 'MySQL', 'Oracle DB'],
+    },
+    {
+      id: 'frameworks',
+      label: 'Frameworks',
+      icon: '🚀',
+      skills: ['Numpy', 'Pandas', 'Scikit-Learn', 'OpenCV', 'NLTK', 'Seaborn', 'Vosk', 'Flask'],
+    },
+    {
+      id: 'tools',
+      label: 'Tools & Tech',
+      icon: '🛠',
+      skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman', 'Kaggle', 'Linux'],
+    },
+    {
+      id: 'languages',
+      label: 'Languages Spoken',
+      icon: '🌍',
+      skills: ['English', 'Hindi', 'Bengali'],
+    },
+    {
+      id: 'interests',
+      label: 'Interests',
+      icon: '💡',
+      skills: [
+        'Machine Learning',
+        'Deep Learning',
+        'Reinforcement Learning',
+        'Data Structures & Algorithms',
+        'Object-Oriented Programming',
+        'Optimization Algorithms',
+      ],
+    },
+  ];
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
