@@ -145,8 +145,8 @@ const Portfolio = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === item.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   {item.label}
@@ -172,8 +172,8 @@ const Portfolio = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${activeSection === item.id
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
               >
                 {item.label}
@@ -564,33 +564,26 @@ const Portfolio = () => {
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 <div className="relative p-8">
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-4 relative">
                     <div className={`p-3 bg-gradient-to-br ${project.gradient} rounded-xl transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110`}>
                       <Code className="text-white" size={24} />
                     </div>
-                    {project.live ? (
+
+                    {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2"
+                        onClick={(e) => e.stopPropagation()} // prevent redirect to GitHub when clicking Live
+                        className="absolute top-0 right-0 mt-1 mr-1"
                       >
-                        <span className="relative flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-blue-500/20 border border-blue-400 text-blue-400 hover:scale-110 transition-all">
+                        <span className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold bg-blue-500/20 border border-blue-400 text-blue-300 backdrop-blur-sm hover:scale-105 transition-all">
                           <span className="w-2.5 h-2.5 bg-blue-400 rounded-full animate-ping"></span>
                           <span className="w-2.5 h-2.5 bg-blue-400 rounded-full absolute"></span>
                           Live
                         </span>
                       </a>
-                    ) : (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="text-gray-400 group-hover:text-white transition-colors" size={20} />
-                      </a>
                     )}
-                    <ExternalLink className="text-gray-400 group-hover:text-white transition-colors" size={20} />
                   </div>
                   <h3 className="text-2xl font-bold mb-3 group-hover:translate-x-2 transition-transform duration-300">
                     {project.name}
