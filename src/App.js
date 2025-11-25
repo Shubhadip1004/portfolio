@@ -87,43 +87,58 @@ const Portfolio = () => {
     },
   ];
 
-  const skillTrainSections = [
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const skillCategories = [
     {
-      id: 'programming',
-      label: 'Programming',
-      icon: '🧠',
-      skills: ['Python', 'Java', 'C', 'MySQL', 'Oracle DB'],
+      title: "Programming",
+      icons: [
+        "/images/icons/python.svg",
+        "/images/icons/java.svg",
+        "/images/icons/c.svg",
+        "/images/icons/mysql.svg",
+        "/images/icons/oracle.svg"
+      ]
     },
     {
-      id: 'frameworks',
-      label: 'Frameworks',
-      icon: '🚀',
-      skills: ['Numpy', 'Pandas', 'Scikit-Learn', 'OpenCV', 'NLTK', 'Seaborn', 'Vosk', 'Flask'],
+      title: "Frameworks",
+      icons: [
+        "/images/icons/numpy.svg",
+        "/images/icons/pandas.svg",
+        "/images/icons/sklearn.svg",
+        "/images/icons/opencv.svg",
+        "/images/icons/nltk.svg"
+      ]
     },
     {
-      id: 'tools',
-      label: 'Tools & Tech',
-      icon: '🛠',
-      skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman', 'Kaggle', 'Linux'],
+      title: "Tools & Tech",
+      icons: [
+        "/images/icons/git.svg",
+        "/images/icons/github.svg",
+        "/images/icons/docker.svg",
+        "/images/icons/postman.svg",
+        "/images/icons/linux.svg"
+      ]
     },
     {
-      id: 'languages',
-      label: 'Languages Spoken',
-      icon: '🌍',
-      skills: ['English', 'Hindi', 'Bengali'],
+      title: "Languages Spoken",
+      icons: [
+        "/images/icons/english.svg",
+        "/images/icons/hindi.svg",
+        "/images/icons/bengali.svg"
+      ]
     },
     {
-      id: 'interests',
-      label: 'Interests',
-      icon: '💡',
-      skills: [
-        'Machine Learning',
-        'Deep Learning',
-        'Reinforcement Learning',
-        'Data Structures & Algorithms',
-        'Object-Oriented Programming',
-        'Optimization Algorithms',
-      ],
+      title: "Interests",
+      textOnly: false,
+      items: [
+        { name: "Machine Learning", emoji: "🤖" },
+        { name: "Deep Learning", emoji: "🧠" },
+        { name: "Reinforcement Learning", emoji: "♻️" },
+        { name: "DSA", emoji: "📊" },
+        { name: "OOP", emoji: "🧱" },
+        { name: "Optimization Algorithms", emoji: "🚀" },
+      ]
     },
   ];
 
@@ -485,62 +500,71 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
+      <section id="skills" className="py-24 px-4 relative">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-5xl md:text-7xl font-black mb-10">
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Skills
+              My Skills
             </span>
           </h2>
 
-          {/* TRAIN + TRACK */}
-          <div className="relative h-[700px] mt-10">
+          {/* Category Title */}
+          <h3 className="text-2xl font-semibold text-gray-300 mb-12">
+            {skillCategories[currentIndex].title}
+          </h3>
 
-            {/* Track stays where it is (perfect) */}
-            <div className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-              <div className="train-track"></div>
-            </div>
-
-            {/* Realistic TRAIN MOVEMENT on the track */}
-            {skillTrainSections.map((section, index) => {
-              const isActive = activeWagon === section.id;
-
-              return (
+          {/* Skill Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-7 justify-center mb-14">
+            {skillCategories[currentIndex].icons &&
+              skillCategories[currentIndex].icons.map((icon, index) => (
                 <div
-                  key={section.id}
-                  className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2"
-                  style={{
-                    offsetPath: "path('M 0 0 C 350 -300 630 -300 900 0 C 630 300 350 300 0 0')",
-                    offsetRotate: "auto",
-                    animation: `trainPath 16s linear infinite`,
-                    animationPlayState: activeWagon ? "paused" : "running",
-                    animationDelay: `${index * 0.55}s`, // wagons follow engine
-                  }}
+                  key={index}
+                  className="w-32 h-32 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex flex-col items-center justify-center hover:scale-110 transition-all shadow-lg"
                 >
-                  <button
-                    type="button"
-                    onClick={() => setActiveWagon(isActive ? null : section.id)}
-                    className={`train-wagon ${isActive ? "active-wagon" : ""}`}
-                  >
-                    <span className="text-lg">{section.icon}</span>
-                    {section.label}
-                  </button>
-
-                  {/* Skills popup above wagon */}
-                  {isActive && (
-                    <div className="skills-popup">
-                      {section.skills.map((skill) => (
-                        <span key={skill} className="skill-pill">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <img src={icon} className="w-14 h-14 object-contain" />
                 </div>
-              );
-            })}
+              ))}
+
+            {skillCategories[currentIndex].items &&
+              skillCategories[currentIndex].items.map((item, index) => (
+                <div
+                  key={index}
+                  className="w-32 h-32 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex flex-col gap-1 items-center justify-center hover:scale-110 transition-all shadow-lg"
+                >
+                  <span className="text-4xl">{item.emoji}</span>
+                  <span className="text-xs font-semibold text-gray-200 px-3 text-center leading-tight">
+                    {item.name}
+                  </span>
+                </div>
+              ))}
           </div>
 
+          {/* Navigation Arrows */}
+          <div className="flex justify-center items-center gap-8 mb-6">
+            <button
+              onClick={() => setCurrentIndex((currentIndex - 1 + skillCategories.length) % skillCategories.length)}
+              className="text-white hover:text-green-400 text-4xl transition"
+            >
+              ❮
+            </button>
+            <button
+              onClick={() => setCurrentIndex((currentIndex + 1) % skillCategories.length)}
+              className="text-white hover:text-green-400 text-4xl transition"
+            >
+              ❯
+            </button>
+          </div>
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-3">
+            {skillCategories.map((_, idx) => (
+              <span
+                key={idx}
+                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? "bg-green-400 scale-125" : "bg-gray-500"
+                  }`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
