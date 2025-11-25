@@ -494,70 +494,53 @@ const Portfolio = () => {
           </h2>
 
           {/* TRAIN + TRACK */}
-          {/* TRAIN + TRACK */}
-          <div className="relative h-[650px] mt-10">
+          <div className="relative h-[700px] mt-10">
 
-            {/* Track (lower half) */}
-            <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            {/* Track stays where it is (perfect) */}
+            <div className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
               <div className="train-track"></div>
             </div>
 
-            {/* Train moving exactly on the track */}
-            <div
-              className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2"
-              style={{
-                animation: 'trainPath 26s linear infinite',
-                animationPlayState: activeWagon ? 'paused' : 'running',
-              }}
-            >
-              <div className="flex items-center gap-4">
-                {/* Engine */}
-                <div className="px-5 py-4 rounded-2xl bg-gradient-to-br from-gray-300 to-gray-600 border border-gray-900 shadow-[0_0_20px_rgba(0,0,0,0.45)] flex items-center gap-2 text-slate-900 font-bold">
-                  <span className="text-2xl">🚂</span>
-                  <span className="font-semibold text-xs md:text-sm tracking-wide uppercase text-white/90">
-                    Skills Express
-                  </span>
-                </div>
+            {/* Realistic TRAIN MOVEMENT on the track */}
+            {skillTrainSections.map((section, index) => {
+              const isActive = activeWagon === section.id;
 
-                {/* Cargo containers */}
-                {skillTrainSections.map((section) => {
-                  const isActive = activeWagon === section.id;
-                  return (
-                    <div key={section.id} className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setActiveWagon(isActive ? null : section.id)}
-                        className={`px-4 py-3 min-w-[130px] rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center gap-1
-                ${isActive
-                            ? 'bg-white/20 border-blue-400 shadow-lg shadow-blue-500/40'
-                            : 'bg-white/5 border-white/20 hover:bg-white/10 hover:border-blue-300'
-                          }`}
-                      >
-                        <span className="text-lg">{section.icon}</span>
-                        <span className="text-xs md:text-sm font-semibold text-gray-100 text-center">
-                          {section.label}
+              return (
+                <div
+                  key={section.id}
+                  className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    offsetPath: "path('M 0 0 C 350 -300 630 -300 900 0 C 630 300 350 300 0 0')",
+                    offsetRotate: "auto",
+                    animation: `trainPath 16s linear infinite`,
+                    animationPlayState: activeWagon ? "paused" : "running",
+                    animationDelay: `${index * 0.55}s`, // wagons follow engine
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveWagon(isActive ? null : section.id)}
+                    className={`train-wagon ${isActive ? "active-wagon" : ""}`}
+                  >
+                    <span className="text-lg">{section.icon}</span>
+                    {section.label}
+                  </button>
+
+                  {/* Skills popup above wagon */}
+                  {isActive && (
+                    <div className="skills-popup">
+                      {section.skills.map((skill) => (
+                        <span key={skill} className="skill-pill">
+                          {skill}
                         </span>
-                      </button>
-
-                      {/* Popped out skills ABOVE the container */}
-                      {isActive && (
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-full w-max max-w-xs md:max-w-sm flex flex-wrap justify-center gap-2 p-3 rounded-2xl bg-black/80 border border-blue-400/60 shadow-xl shadow-blue-500/40 backdrop-blur-md">
-                          {section.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs md:text-sm text-gray-100"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                      ))}
                     </div>
-                  );
-                })}
-              </div>
-            </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
+
         </div>
       </section>
 
