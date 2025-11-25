@@ -162,7 +162,7 @@ const Portfolio = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       changeCategory(1);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
