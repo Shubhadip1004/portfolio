@@ -47,7 +47,7 @@
   width: 1500px;
   height: 800px;
   border-radius: 400px;
-  background-image: url("/images/track.png");
+  background-image: url("../public/images/track.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin: 0 auto;
