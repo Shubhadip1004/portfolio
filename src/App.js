@@ -88,59 +88,104 @@ const Portfolio = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const changeCategory = (dir) => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + dir + skillCategories.length) % skillCategories.length);
+      setFade(true);
+    }, 250); // fade duration
+  };
 
   const skillCategories = [
     {
       title: "Programming",
-      icons: [
-        "/images/icons/python.svg",
-        "/images/icons/java.svg",
-        "/images/icons/c.svg",
-        "/images/icons/mysql.svg",
-        "/images/icons/oracle.svg"
+      items: [
+        { name: "Python", emoji: "🐍" },
+        { name: "Java", emoji: "☕" },
+        { name: "C", emoji: "💠" },
+        { name: "MySQL", emoji: "🗄️" },
+        { name: "Oracle DB", emoji: "🧱" },
+        { name: "JavaScript", emoji: "🟨" },
+        { name: "HTML", emoji: "📄" },
+        { name: "CSS", emoji: "🎨" },
       ]
     },
     {
       title: "Frameworks",
-      icons: [
-        "/images/icons/numpy.svg",
-        "/images/icons/pandas.svg",
-        "/images/icons/sklearn.svg",
-        "/images/icons/opencv.svg",
-        "/images/icons/nltk.svg"
+      items: [
+        { name: "Pandas", emoji: "🐼" },
+        { name: "NumPy", emoji: "🔢" },
+        { name: "Scikit-Learn", emoji: "📊" },
+        { name: "OpenCV", emoji: "👁️" },
+        { name: "NLTK", emoji: "💬" },
+        { name: "TensorFlow", emoji: "🧠" },
+        { name: "Flask", emoji: "⚗️" },
+        { name: "Streamlit", emoji: "🟥" },
       ]
     },
     {
       title: "Tools & Tech",
-      icons: [
-        "/images/icons/git.svg",
-        "/images/icons/github.svg",
-        "/images/icons/docker.svg",
-        "/images/icons/postman.svg",
-        "/images/icons/linux.svg"
+      items: [
+        { name: "Git", emoji: "🔧" },
+        { name: "GitHub", emoji: "🐙" },
+        { name: "Docker", emoji: "🐳" },
+        { name: "Postman", emoji: "📮" },
+        { name: "Linux", emoji: "🐧" },
+        { name: "VS Code", emoji: "💻" },
       ]
     },
     {
       title: "Languages Spoken",
-      icons: [
-        "/images/icons/english.svg",
-        "/images/icons/hindi.svg",
-        "/images/icons/bengali.svg"
+      items: [
+        { name: "English", emoji: "🇬🇧" },
+        { name: "Hindi", emoji: "🇮🇳" },
+        { name: "Bengali", emoji: "🌐" },
       ]
     },
     {
       title: "Interests",
-      textOnly: false,
       items: [
         { name: "Machine Learning", emoji: "🤖" },
         { name: "Deep Learning", emoji: "🧠" },
         { name: "Reinforcement Learning", emoji: "♻️" },
         { name: "DSA", emoji: "📊" },
         { name: "OOP", emoji: "🧱" },
-        { name: "Optimization Algorithms", emoji: "🚀" },
+        { name: "Optimization", emoji: "🚀" },
       ]
-    },
+    }
   ];
+
+  // Auto slide every 4s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      changeCategory(1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  // Swipe support
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const handleTouchEnd = (e) => {
+    if (!touchStartX) return;
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (diff > 80) changeCategory(-1);
+    if (diff < -80) changeCategory(1);
+    setTouchStartX(null);
+  };
+
+  // Soft click sound
+  const playSound = () => {
+    const audio = new Audio("/sounds/click.mp3");
+    audio.volume = 0.25;
+    audio.play();
+  };
+
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -499,68 +544,72 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-24 px-4 relative">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-black mb-10">
+      <section
+        id="skills"
+        className="py-28 px-4 relative"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+
+        <div className="max-w-7xl mx-auto text-center">
+
+          <h2 className="text-5xl md:text-7xl font-black mb-16">
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
               My Skills
             </span>
           </h2>
 
-          {/* Category Title */}
-          <h3 className="text-2xl font-semibold text-gray-300 mb-12">
+          <h3 className="text-3xl font-semibold text-gray-200 mb-12 tracking-wide">
             {skillCategories[currentIndex].title}
           </h3>
 
-          {/* Skill Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-7 justify-center mb-14">
-            {skillCategories[currentIndex].icons &&
-              skillCategories[currentIndex].icons.map((icon, index) => (
-                <div
-                  key={index}
-                  className="w-32 h-32 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex flex-col items-center justify-center hover:scale-110 transition-all shadow-lg"
-                >
-                  <img src={icon} className="w-14 h-14 object-contain" />
-                </div>
-              ))}
+          {/* Left Arrow */}
+          <button
+            onClick={() => changeCategory(-1)}
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-green-400 text-6xl transition hover:scale-125"
+          >
+            ❮
+          </button>
 
-            {skillCategories[currentIndex].items &&
-              skillCategories[currentIndex].items.map((item, index) => (
+          {/* Right Arrow */}
+          <button
+            onClick={() => changeCategory(1)}
+            className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-green-400 text-6xl transition hover:scale-125"
+          >
+            ❯
+          </button>
+
+          {/* Skill Cards */}
+          <div
+            className={`transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 justify-center mb-16">
+              {skillCategories[currentIndex].items.map((item, idx) => (
                 <div
-                  key={index}
-                  className="w-32 h-32 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex flex-col gap-1 items-center justify-center hover:scale-110 transition-all shadow-lg"
+                  key={idx}
+                  onMouseEnter={playSound}
+                  className="w-44 h-44 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl
+                    shadow-[0px_0px_35px_rgba(0,255,200,0.25)]
+                    flex flex-col items-center justify-center gap-3
+                    hover:scale-110 hover:shadow-[0px_0px_40px_rgba(0,255,150,0.55)]
+                    transition-all cursor-pointer select-none"
                 >
-                  <span className="text-4xl">{item.emoji}</span>
-                  <span className="text-xs font-semibold text-gray-200 px-3 text-center leading-tight">
+
+                  <span className="text-6xl">{item.emoji}</span>
+                  <span className="text-sm font-semibold text-gray-200 px-3 text-center leading-tight">
                     {item.name}
                   </span>
                 </div>
               ))}
+            </div>
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex justify-center items-center gap-8 mb-6">
-            <button
-              onClick={() => setCurrentIndex((currentIndex - 1 + skillCategories.length) % skillCategories.length)}
-              className="text-white hover:text-green-400 text-4xl transition"
-            >
-              ❮
-            </button>
-            <button
-              onClick={() => setCurrentIndex((currentIndex + 1) % skillCategories.length)}
-              className="text-white hover:text-green-400 text-4xl transition"
-            >
-              ❯
-            </button>
-          </div>
-
-          {/* Pagination Dots */}
+          {/* Pagination dots */}
           <div className="flex justify-center gap-3">
             {skillCategories.map((_, idx) => (
               <span
                 key={idx}
-                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? "bg-green-400 scale-125" : "bg-gray-500"
+                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex ? "bg-green-400 scale-125" : "bg-gray-600"
                   }`}
               />
             ))}
