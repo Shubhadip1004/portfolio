@@ -43,6 +43,23 @@
 }
 
 /* 📌 BIG FUTURISTIC TRAIN TRACK */
+.train-track {
+  width: 1500px;
+  height: 800px;
+  background-image: url("../public/images/track.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.95;
+}
+
+
+/* 📌 RESPONSIVE SCALING */
+@media (max-width: 1600px) { .train-track { transform: scale(0.85); } }
+@media (max-width: 1300px) { .train-track { transform: scale(0.75); } }
+@media (max-width: 1000px) { .train-track { transform: scale(0.62); } }
+@media (max-width: 800px)  { .train-track { transform: scale(0.50); } }
+@media (max-width: 600px)  { .train-track { transform: scale(0.40); } }
+
 /* Engine + wagons styling */
 .train-wagon {
   display: flex;
