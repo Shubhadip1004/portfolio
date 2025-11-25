@@ -43,29 +43,55 @@
 }
 
 /* 📌 BIG FUTURISTIC TRAIN TRACK */
-.train-track {
-  width: 1500px;
-  height: 800px;
-  background-image: url("../public/images/track.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  opacity: 0.95;
+/* Engine + wagons styling */
+.train-wagon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 18px;
+  min-width: 135px;
+  border-radius: 18px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: 0.3s;
+}
+.train-wagon.active-wagon {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid #4db7ff;
+  box-shadow: 0 0 18px rgba(80,170,255,0.45);
 }
 
+/* Skills popup */
+.skills-popup {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px;
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(80,170,255,0.6);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 18px rgba(80,170,255,0.35);
+}
+.skill-pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  font-size: 0.8rem;
+}
 
-/* 📌 RESPONSIVE SCALING */
-@media (max-width: 1600px) { .train-track { transform: scale(0.85); } }
-@media (max-width: 1300px) { .train-track { transform: scale(0.75); } }
-@media (max-width: 1000px) { .train-track { transform: scale(0.62); } }
-@media (max-width: 800px)  { .train-track { transform: scale(0.50); } }
-@media (max-width: 600px)  { .train-track { transform: scale(0.40); } }
-
-/* 📌 NEW REALISTIC TRAIN PATH (large track movement) */
+/* 🚂 Realistic motion on track */
 @keyframes trainPath {
-  0%   { transform: rotate(0deg) translateY(-340px) rotate(0deg); }
-  25%  { transform: rotate(90deg) translateY(-340px) rotate(-90deg); }
-  50%  { transform: rotate(180deg) translateY(-340px) rotate(-180deg); }
-  75%  { transform: rotate(270deg) translateY(-340px) rotate(-270deg); }
-  100% { transform: rotate(360deg) translateY(-340px) rotate(-360deg); }
+  0%   { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
 }
 
