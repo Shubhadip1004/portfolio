@@ -104,9 +104,9 @@ const Portfolio = () => {
       items: [
         { name: "Python", emoji: "🐍" },
         { name: "Java", emoji: "☕" },
-        { name: "C", emoji: "💠" },
+        { name: "C", emoji: "©️" },
         { name: "MySQL", emoji: "🗄️" },
-        { name: "Oracle DB", emoji: "🧱" },
+        { name: "Oracle DB", emoji: "📊" },
         { name: "JavaScript", emoji: "🟨" },
         { name: "HTML", emoji: "📄" },
         { name: "CSS", emoji: "🎨" },
@@ -121,7 +121,9 @@ const Portfolio = () => {
         { name: "OpenCV", emoji: "👁️" },
         { name: "NLTK", emoji: "💬" },
         { name: "TensorFlow", emoji: "🧠" },
+        { name: "Keras", emoji: "🧬" },
         { name: "Flask", emoji: "⚗️" },
+        { name: "Vosk", emoji: "📢" },
         { name: "Streamlit", emoji: "🟥" },
       ]
     },
@@ -130,18 +132,17 @@ const Portfolio = () => {
       items: [
         { name: "Git", emoji: "🔧" },
         { name: "GitHub", emoji: "🐙" },
-        { name: "Docker", emoji: "🐳" },
-        { name: "Postman", emoji: "📮" },
-        { name: "Linux", emoji: "🐧" },
+        { name: "Pycharm", emoji: "🇵🇾" },
+        { name: "IntelliJ", emoji: "𝒥" },
         { name: "VS Code", emoji: "💻" },
       ]
     },
     {
       title: "Languages Spoken",
       items: [
-        { name: "English", emoji: "🇬🇧" },
-        { name: "Hindi", emoji: "🇮🇳" },
-        { name: "Bengali", emoji: "🌐" },
+        { name: "English", emoji: "🔠" },
+        { name: "Hindi", emoji: "ૐ" },
+        { name: "Bengali", emoji: "বাংলা" },
       ]
     },
     {
@@ -150,9 +151,9 @@ const Portfolio = () => {
         { name: "Machine Learning", emoji: "🤖" },
         { name: "Deep Learning", emoji: "🧠" },
         { name: "Reinforcement Learning", emoji: "♻️" },
-        { name: "DSA", emoji: "📊" },
-        { name: "OOP", emoji: "🧱" },
-        { name: "Optimization", emoji: "🚀" },
+        { name: "DSA", emoji: "𖡎" },
+        { name: "OOP", emoji: "🚀" },
+        { name: "Optimization", emoji: "🌀" },
       ]
     }
   ];
