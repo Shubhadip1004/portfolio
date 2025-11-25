@@ -496,14 +496,14 @@ const Portfolio = () => {
           <div className="mt-16 relative h-72">
             {/* Track (flat ellipse) */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-full max-w-4xl h-32 border-2 border-dashed border-slate-600/60 rounded-full"></div>
+              <div className="train-track"></div>
             </div>
 
             {/* Moving train (engine + 5 cargo containers) */}
             <div
               className="absolute inset-0 flex items-center justify-center"
               style={{
-                animation: 'trainPath 18s linear infinite',
+                animation: 'trainPath 20s linear infinite',
                 animationPlayState: activeWagon ? 'paused' : 'running',
               }}
             >
