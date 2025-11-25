@@ -1,3 +1,4 @@
+import "./App.css";
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Linkedin, Github, ExternalLink, Menu, X, Download, Code, Award, BookOpen, Briefcase, Star, Zap, Rocket, Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
 
@@ -503,7 +504,7 @@ const Portfolio = () => {
             <div
               className="absolute inset-0 flex items-center justify-center"
               style={{
-                animation: 'trainPath 20s linear infinite',
+                animation: 'trainPath 26s linear infinite',
                 animationPlayState: activeWagon ? 'paused' : 'running',
               }}
             >
