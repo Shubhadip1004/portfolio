@@ -87,7 +87,7 @@ const Portfolio = () => {
     },
   ];
 
-    const skillTrainSections = [
+  const skillTrainSections = [
     {
       id: 'programming',
       label: 'Programming',
@@ -187,8 +187,8 @@ const Portfolio = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${activeSection === item.id
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                 >
                   {item.label}
@@ -214,8 +214,8 @@ const Portfolio = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-lg mb-2 transition-all duration-300 ${activeSection === item.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
               >
                 {item.label}
@@ -494,15 +494,17 @@ const Portfolio = () => {
           </h2>
 
           {/* TRAIN + TRACK */}
-          <div className="mt-16 relative h-72">
-            {/* Track (flat ellipse) */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* TRAIN + TRACK */}
+          <div className="relative h-[650px] mt-10">
+
+            {/* Track (lower half) */}
+            <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
               <div className="train-track"></div>
             </div>
 
-            {/* Moving train (engine + 5 cargo containers) */}
+            {/* Train moving exactly on the track */}
             <div
-              className="absolute inset-0 flex items-center justify-center"
+              className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2"
               style={{
                 animation: 'trainPath 26s linear infinite',
                 animationPlayState: activeWagon ? 'paused' : 'running',
@@ -524,11 +526,9 @@ const Portfolio = () => {
                     <div key={section.id} className="relative">
                       <button
                         type="button"
-                        onClick={() =>
-                          setActiveWagon(isActive ? null : section.id)
-                        }
+                        onClick={() => setActiveWagon(isActive ? null : section.id)}
                         className={`px-4 py-3 min-w-[130px] rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center gap-1
-                          ${isActive
+                ${isActive
                             ? 'bg-white/20 border-blue-400 shadow-lg shadow-blue-500/40'
                             : 'bg-white/5 border-white/20 hover:bg-white/10 hover:border-blue-300'
                           }`}
@@ -539,7 +539,7 @@ const Portfolio = () => {
                         </span>
                       </button>
 
-                      {/* Skills popping out ABOVE the container */}
+                      {/* Popped out skills ABOVE the container */}
                       {isActive && (
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2 -translate-y-full w-max max-w-xs md:max-w-sm flex flex-wrap justify-center gap-2 p-3 rounded-2xl bg-black/80 border border-blue-400/60 shadow-xl shadow-blue-500/40 backdrop-blur-md">
                           {section.skills.map((skill) => (
