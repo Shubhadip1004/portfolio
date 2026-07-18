@@ -28,18 +28,100 @@
   color: #61dafb;
 }
 
+/* ==========================================
+   Publication Type Ribbons (Legacy)
+========================================== */
+
 .ribbon-book {
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
 }
 
 .ribbon-journal {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
 }
 
 .ribbon-conference {
-    background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
 }
 
 .ribbon-preprint {
-    background: linear-gradient(135deg, #ea580c, #fb923c);
+  background: linear-gradient(135deg, #ea580c, #fb923c);
+}
+
+/* ==========================================
+   Publications Timeline
+========================================== */
+
+.publication-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d1d5db;
+  font-size: 0.82rem;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+}
+
+.publication-chip:hover {
+  color: #67e8f9;
+  border-color: rgba(34, 211, 238, 0.8);
+  transform: translateY(-2px);
+}
+
+#publications .group:hover .publication-chip {
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+.timeline-line {
+  background: linear-gradient(
+    to bottom,
+    #22d3ee,
+    #3b82f6,
+    #10b981
+  );
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.35);
+}
+
+.timeline-dot {
+  transition: all 0.35s ease;
+}
+
+.timeline-dot:hover {
+  transform: scale(1.2);
+  box-shadow:
+    0 0 15px rgba(34, 211, 238, 0.8),
+    0 0 35px rgba(34, 211, 238, 0.45);
+}
+
+#publications .group {
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+#publications .group:hover {
+  z-index: 5;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 768px) {
+
+  #publications h2 {
+    margin-bottom: 4rem;
+  }
+
+  .publication-chip {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+  }
+
 }

@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
 import publications from "./data/publications";
-import PublicationCard from "./components/PublicationCard";
 import { Mail, Phone, Linkedin, Github, ExternalLink, Menu, X, Download, Code, Award, BookOpen, Briefcase, Star, Zap, Rocket, Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
 
 const Portfolio = () => {
@@ -200,6 +199,16 @@ const Portfolio = () => {
     { id: 'certifications', label: 'Certifications' },
     { id: 'publications', label: 'Publications' },
   ];
+
+  const groupedPublications = publications.reduce((acc, publication) => {
+    if (!acc[publication.year]) {
+      acc[publication.year] = [];
+    }
+    acc[publication.year].push(publication);
+    return acc;
+  }, {});
+
+  const publicationYears = Object.keys(groupedPublications).sort((a, b) => b - a);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -755,25 +764,156 @@ const Portfolio = () => {
       </section>
 
       {/* Publications Section */}
-      <section id="publications" className="py-20 px-4 relative">
-        <div className="max-w-7xl mx-auto">
 
-          <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Publications
+      <section id="publications" className="py-24 px-4 relative">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-black text-center mb-24">
+            <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Research Journey
             </span>
           </h2>
+          <div className="relative">
+            {publicationYears.map((year) => (
+              <div key={year} className="relative mb-24">
+                {/* Year */}
+                <div className="sticky top-24 z-20 mb-12 flex justify-center">
+                  <div className="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-cyan-400/30 backdrop-blur-xl">
+                    <span className="text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                      {year}
+                    </span>
+                  </div>
+                </div>
+                <div className="relative">
+                  {/* Timeline */}
+                  <div className="timeline-line absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px]"></div>
+                  {groupedPublications[year].map((publication, index) => (
+                    <div
+                      key={publication.id}
+                      className={`relative flex items-center mb-16 ${index % 2 === 0
+                          ? "md:flex-row"
+                          : "md:flex-row-reverse"
+                        }`}
+                    >
+                      {/* Timeline Dot */}
+                      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-20">
+                        <div className="timeline-dot w-7 h-7 rounded-full bg-cyan-400 border-4 border-slate-950 shadow-[0_0_35px_rgba(34,211,238,.8)]"></div>
+                      </div>
+                      <div className="hidden md:block w-1/2"></div>
+                      <div className="ml-16 md:ml-0 md:w-1/2 md:px-10">
+                        <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/40 hover:shadow-[0_20px_60px_rgba(0,255,255,.15)]">
+                          {/* Hover Background */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                          <div className="relative">
+                            {/* Badges */}
+                            <div className="flex flex-wrap gap-2 mb-5">
+                              <span className="publication-chip">
+                                {publication.publicationType}
+                              </span>
+                              <span className="publication-chip">
+                                {publication.status}
+                              </span>
 
-          <div className="space-y-10">
-            {publications.map((publication) => (
-              <PublicationCard
-                key={publication.id}
-                publication={publication}
-              />
+                              <span className="publication-chip">
+
+                                {publication.publisher}
+
+                              </span>
+
+                              {publication.series && (
+
+                                <span className="publication-chip">
+
+                                  {publication.series}
+
+                                </span>
+
+                              )}
+
+                            </div>
+
+                            {/* Title */}
+
+                            <h3 className="text-2xl font-bold leading-snug mb-5 group-hover:text-cyan-300 transition">
+
+                              {publication.title}
+
+                            </h3>
+
+                            {/* Description */}
+
+                            <p className="text-gray-300 leading-8 mb-6">
+
+                              {publication.description}
+
+                            </p>
+
+                            {/* Authors */}
+
+                            <div className="mb-6">
+
+                              <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
+
+                                Authors
+
+                              </p>
+
+                              <p className="text-gray-200">
+
+                                {publication.authors.join(" • ")}
+
+                              </p>
+
+                            </div>
+
+                            {/* Footer */}
+
+                            <div className="flex justify-between items-center flex-wrap gap-4">
+
+                              <div className="text-sm text-gray-500">
+
+                                {publication.publisher}
+
+                              </div>
+
+                              <a
+                                href={publication.publicationLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition-all hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,200,255,.35)]"
+                              >
+
+                                View Publication
+
+                                <ExternalLink size={18} />
+
+                              </a>
+
+                            </div>
+
+                          </div>
+
+                          {/* Bottom Accent */}
+
+                          <div className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 group-hover:scale-x-100 transition-transform duration-500"></div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
             ))}
+
           </div>
 
         </div>
+
       </section>
 
       {/* Contact Section */}
