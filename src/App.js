@@ -874,7 +874,7 @@ const Portfolio = () => {
 
           <div className="mt-20 pt-10 border-t border-white/10 text-center">
             <p className="text-gray-400">
-              © 2025 Shubhadip Mahata. Crafted with <span className="text-red-500 animate-pulse">❤</span> and <span className="text-blue-400">Code</span>
+              © 2026 Shubhadip Mahata. Crafted with <span className="text-red-500 animate-pulse">❤</span> and <span className="text-blue-400">Code</span>
             </p>
           </div>
         </div>
