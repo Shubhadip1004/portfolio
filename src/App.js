@@ -785,21 +785,17 @@ const Portfolio = () => {
                 </div>
                 <div className="relative">
                   {/* Timeline */}
-                  <div className="timeline-line absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px]"></div>
+                  <div className="absolute left-10 top-0 bottom-0 w-[2px] timeline-line"></div>
                   {groupedPublications[year].map((publication, index) => (
                     <div
                       key={publication.id}
-                      className={`relative flex items-center mb-16 ${index % 2 === 0
-                          ? "md:flex-row"
-                          : "md:flex-row-reverse"
-                        }`}
+                      className="relative flex items-start gap-8 mb-14"
                     >
                       {/* Timeline Dot */}
-                      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-20">
+                      <div className="absolute left-10 -translate-x-1/2 top-10">
                         <div className="timeline-dot w-7 h-7 rounded-full bg-cyan-400 border-4 border-slate-950 shadow-[0_0_35px_rgba(34,211,238,.8)]"></div>
                       </div>
-                      <div className="hidden md:block w-1/2"></div>
-                      <div className="ml-16 md:ml-0 md:w-1/2 md:px-10">
+                      <div className="ml-24 w-full">
                         <div className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400/40 hover:shadow-[0_20px_60px_rgba(0,255,255,.15)]">
                           {/* Hover Background */}
                           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -867,29 +863,32 @@ const Portfolio = () => {
 
                             {/* Footer */}
 
-                            <div className="flex justify-between items-center flex-wrap gap-4">
+                            {/* Footer */}
+                            <div className="flex justify-end flex-wrap gap-3">
 
-                              <div className="text-sm text-gray-500">
-
-                                {publication.publisher}
-
-                              </div>
+                              {publication.previewLink && (
+                                <a
+                                  href={publication.previewLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-cyan-400/40 text-cyan-300 hover:bg-cyan-400/10 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105"
+                                >
+                                  Preview
+                                  <ExternalLink size={16} />
+                                </a>
+                              )}
 
                               <a
                                 href={publication.publicationLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition-all hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,200,255,.35)]"
+                                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,200,255,.35)]"
                               >
-
-                                View Publication
-
-                                <ExternalLink size={18} />
-
+                                Publication
+                                <ExternalLink size={16} />
                               </a>
 
                             </div>
-
                           </div>
 
                           {/* Bottom Accent */}
