@@ -27,3 +27,19 @@
 .App-link {
   color: #61dafb;
 }
+
+.ribbon-book {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.ribbon-journal {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+.ribbon-conference {
+    background: linear-gradient(135deg, #06b6d4, #22d3ee);
+}
+
+.ribbon-preprint {
+    background: linear-gradient(135deg, #ea580c, #fb923c);
+}

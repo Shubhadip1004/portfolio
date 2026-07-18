@@ -1,5 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
+import publications from "./data/publications";
+import PublicationCard from "./components/PublicationCard";
 import { Mail, Phone, Linkedin, Github, ExternalLink, Menu, X, Download, Code, Award, BookOpen, Briefcase, Star, Zap, Rocket, Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
 
 const Portfolio = () => {
@@ -754,37 +756,23 @@ const Portfolio = () => {
 
       {/* Publications Section */}
       <section id="publications" className="py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
+
           <h2 className="text-5xl md:text-7xl font-black mb-20 text-center">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Publications</span>
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              Publications
+            </span>
           </h2>
 
-          <div className="group relative overflow-hidden transform transition-all duration-500 hover:scale-105">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 group-hover:from-emerald-500/20 group-hover:to-cyan-500/20 transition-colors duration-500"></div>
-            <div className="relative p-10">
-              <div className="flex items-start gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-2xl flex items-center justify-center text-3xl font-black transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                    2025
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-3xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">
-                    Enhanced Black Hole Optimization: A Metaheuristics Approach to address optimization challenges
-                  </h3>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <p className="text-lg font-semibold text-green-400">
-                      ACCEPTED - International Conference on Data Mining and Information Security
-                    </p>
-                  </div>
-                  <p className="text-gray-300 text-lg">
-                    Shubhadip Mahata, Soumyadip Paul, Partha Ghosh
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="space-y-10">
+            {publications.map((publication) => (
+              <PublicationCard
+                key={publication.id}
+                publication={publication}
+              />
+            ))}
           </div>
+
         </div>
       </section>
 
