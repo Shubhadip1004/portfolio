@@ -106,6 +106,7 @@ const Portfolio = () => {
         { name: "Python", emoji: "🐍" },
         { name: "Java", emoji: "☕" },
         { name: "C", emoji: "©️" },
+        { name: "C#", emoji: "#️⃣" },
         { name: "MySQL", emoji: "🗄️" },
         { name: "Oracle DB", emoji: "📊" },
         { name: "JavaScript", emoji: "🟨" },
