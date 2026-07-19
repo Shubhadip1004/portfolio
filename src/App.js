@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
 import publications from "./data/publications";
-import { Mail, Phone, Linkedin, Github, ExternalLink, Menu, X, Download, Code, Award, BookOpen, Briefcase, Star, Zap, Rocket, Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, ExternalLink, Menu, X, Download, Code, Award, BookOpen, ChevronsLeftRightEllipsis, Briefcase, Star, Zap, Rocket, Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
 
 const Portfolio = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -423,8 +423,9 @@ const Portfolio = () => {
           </h2>
 
           <div className="space-y-8">
+
             <div className="group relative">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
               <div className="pl-12 transform transition-all duration-500 group-hover:translate-x-4">
                 <div className="flex items-center gap-4 mb-4">
                   <Briefcase className="text-blue-400" size={24} />
@@ -461,7 +462,7 @@ const Portfolio = () => {
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
               <div className="pl-12 transform transition-all duration-500 group-hover:translate-x-4">
                 <div className="flex items-center gap-4 mb-4">
-                  <Briefcase className="text-blue-400" size={24} />
+                  <ChevronsLeftRightEllipsis className="text-blue-400" size={24} />
                   <span className="px-4 py-1 bg-blue-500/20 rounded-full text-blue-400 text-sm font-semibold border border-blue-400/30">
                     August 2022 - May 2025
                   </span>
