@@ -429,6 +429,40 @@ const Portfolio = () => {
                 <div className="flex items-center gap-4 mb-4">
                   <Briefcase className="text-blue-400" size={24} />
                   <span className="px-4 py-1 bg-blue-500/20 rounded-full text-blue-400 text-sm font-semibold border border-blue-400/30">
+                    January 2026 - Present
+                  </span>
+                </div>
+                <h3 className="text-3xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                  Systems Engineer
+                </h3>
+                <p className="text-xl text-gray-400 mb-6">Tata Consultancy Services</p>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3 hover:text-white transition-colors">
+                    <Zap className="text-blue-400 flex-shrink-0 mt-1" size={16} />
+                    <span>Delivered full-stack enhancements for the United India Insurance Underwriting platform, seamlessly pivoting between ASP.NET backend architecture and frontend UI components.</span>
+                  </li>
+                  <li className="flex items-start gap-3 hover:text-white transition-colors">
+                    <Zap className="text-blue-400 flex-shrink-0 mt-1" size={16} />
+                    <span>Leveraged AI agents to automate the resolution of recurring technical issues, significantly reducing manual troubleshooting time and accelerating incident turnaround.</span>
+                  </li>
+                  <li className="flex items-start gap-3 hover:text-white transition-colors">
+                    <Zap className="text-blue-400 flex-shrink-0 mt-1" size={16} />
+                    <span>Optimized relational data structures by writing and tuning complex Oracle stored procedures to ensure seamless data retrieval for core underwriting workflows.</span>
+                  </li>
+                  <li className="flex items-start gap-3 hover:text-white transition-colors">
+                    <Zap className="text-blue-400 flex-shrink-0 mt-1" size={16} />
+                    <span>Engineered robust server-side business logic in ASP.NET to streamline the policy issuance lifecycle and enforce strict data validation rules.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group relative">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
+              <div className="pl-12 transform transition-all duration-500 group-hover:translate-x-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <Briefcase className="text-blue-400" size={24} />
+                  <span className="px-4 py-1 bg-blue-500/20 rounded-full text-blue-400 text-sm font-semibold border border-blue-400/30">
                     August 2022 - May 2025
                   </span>
                 </div>
