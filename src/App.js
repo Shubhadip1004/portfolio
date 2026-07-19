@@ -426,7 +426,7 @@ const Portfolio = () => {
           <div className="space-y-8">
 
             <div className="group relative">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-500 to-blue-500 rounded-full transform transition-all duration-500 group-hover:w-2"></div>
               <div className="pl-12 transform transition-all duration-500 group-hover:translate-x-4">
                 <div className="flex items-center gap-4 mb-4">
                   <Briefcase className="text-blue-400" size={24} />
